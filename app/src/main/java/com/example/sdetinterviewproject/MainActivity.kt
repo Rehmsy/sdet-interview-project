@@ -58,44 +58,43 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun generateClickListener(colorData: ColorData) = View.OnClickListener {
-        showHidden(binding.textView)
-        enableNextButton(binding.buttonNext)
+//        showHidden(binding.textView)
+//        enableNextButton(binding.buttonNext)
+        showHiddenTextAndEnableNextButtonIfTrue()
         binding.textView.text = String.format(
             resources.getString(R.string.color_text),
             colorData.colorString
         )
         setTextColor(colorData.colorOptions.colorString)
     }
-//    private fun showHiddenTextAndEnableNextButtonIfTrue() {
-//        when (binding.textView.visibility) {
-//            View.INVISIBLE ->
-//                binding.textView.visibility = View.VISIBLE
-//        }
-//        when {
-//            !binding.buttonNext.isEnabled ->
-//                binding.buttonNext.isEnabled = true
+    private fun showHiddenTextAndEnableNextButtonIfTrue() {
+        when (binding.textView.visibility) {
+            View.INVISIBLE ->
+                binding.textView.visibility = View.VISIBLE
+        }
+        when {
+            !binding.buttonNext.isEnabled ->
+                binding.buttonNext.isEnabled = true
+        }
+    }
+
+//    private fun showHidden(view: View) {
+//        if (view.visibility == View.INVISIBLE) {
+//            view.visibility = View.VISIBLE
 //        }
 //    }
-
-    private fun showHidden(view: View) {
-        if (view.visibility == View.INVISIBLE) {
-            view.visibility = View.VISIBLE
-        }
-    }
-
-    private fun enableNextButton(view: View) {
-        if (!view.isEnabled) {
-            view.isEnabled = true
-        }
-    }
+//
+//    private fun enableNextButton(view: View) {
+//        if (!view.isEnabled) {
+//            view.isEnabled = true
+//        }
+//    }
 
     private fun setTextColor(color: Int) {
         binding.textView.setTextColor(color)
     }
     fun navigateToSecondView(view: View) {
-        binding.buttonNext.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-        }
+        val intent = Intent(this, SecondActivity::class.java)
+        startActivity(intent)
     }
 }
