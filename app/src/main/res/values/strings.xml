@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">SDET Interview Project</string>
-    <string name="edit_message">Enter a message, silly!</string>
+    <string name="app_name">Color Switcher</string>
+    <string name="edit_message">Enter a message!</string>
     <string name="button_next">Next</string>
     <string name="color_text">The text is %1$s</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -12,4 +12,19 @@
     <string name="yellow">yellow</string>
     <string name="black">black</string>
     <string name="grey">grey</string>
+    <string name="button_submit">Submit</string>
+    <string name="enter_a_message">Enter a message…</string>
+    <string name="image_of_sandwich_containing_too_much_tuna">Image of sandwich containing too much tuna.</string>
+    <string name="oh_hello">Oh, hello!</string>
+    <string name="gif_search">GIF Search</string>
+    <string name="searched_gif_is_displayed">Searched GIF is displayed</string>
+    <string name="big_horned_sheep_gif">https://thumbs.gfycat.com/UnequaledSneakyBighornedsheep-size_restricted.gif</string>
+    <string name="data">data</string>
+    <string name="images">images</string>
+    <string name="original">original</string>
+    <string name="gif_title">title</string>
+    <string name="tag">TAG</string>
+    <string name="gif_title_empty">The title is empty</string>
+    <string name="gif_title_string">The title is %1s</string>
+    <string name="url">url</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.sdetinterviewproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(binding) {
-            brown.setOnClickListener(
+            b.setOnClickListener(
                 generateClickListener(
                     ColorData(resources.getString(R.string.brown), ColorOptions.BROWN)
                 )
@@ -50,16 +51,18 @@ class MainActivity : AppCompatActivity() {
                     ColorData(resources.getString(R.string.black), ColorOptions.BLACK)
                 )
             )
-            grey.setOnClickListener(
+            banana.setOnClickListener(
                 generateClickListener(
                     ColorData(resources.getString(R.string.grey), ColorOptions.GREY)
                 )
             )
+            buttonNext.setOnClickListener {
+                val intent = Intent(this@MainActivity, MessageValidationActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
     private fun generateClickListener(colorData: ColorData) = View.OnClickListener {
-//        showHidden(binding.textView)
-//        enableNextButton(binding.buttonNext)
         showHiddenTextAndEnableNextButtonIfTrue()
         binding.textView.text = String.format(
             resources.getString(R.string.color_text),
@@ -68,33 +71,17 @@ class MainActivity : AppCompatActivity() {
         setTextColor(colorData.colorOptions.colorString)
     }
     private fun showHiddenTextAndEnableNextButtonIfTrue() {
-        when (binding.textView.visibility) {
-            View.INVISIBLE ->
-                binding.textView.visibility = View.VISIBLE
-        }
-        when {
-            !binding.buttonNext.isEnabled ->
-                binding.buttonNext.isEnabled = true
+        with(binding) {
+            if (textView.isVisible.not()) {
+                textView.isVisible = true
+            }
+            if (buttonNext.isEnabled.not()) {
+                buttonNext.isEnabled = true
+            }
         }
     }
-
-//    private fun showHidden(view: View) {
-//        if (view.visibility == View.INVISIBLE) {
-//            view.visibility = View.VISIBLE
-//        }
-//    }
-//
-//    private fun enableNextButton(view: View) {
-//        if (!view.isEnabled) {
-//            view.isEnabled = true
-//        }
-//    }
 
     private fun setTextColor(color: Int) {
         binding.textView.setTextColor(color)
-    }
-    fun navigateToSecondView(view: View) {
-        val intent = Intent(this, SecondActivity::class.java)
-        startActivity(intent)
     }
 }
